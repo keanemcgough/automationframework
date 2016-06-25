@@ -3,6 +3,7 @@ package CoreClasses;
 import com.sun.deploy.util.SystemUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -14,8 +15,24 @@ import java.net.URL;
  */
 public class InitialSetup {
     public static WebDriver createDriver() {
-        String remote = System.getProperty("remotedriver");
-        return remote != null && remote.equals("remote") ? createRemoteChromeDriver() : createLocalChromeDriver();
+        String browser = System.getProperty("remotedriver");
+        browser = browser == null ? "" : browser;
+        WebDriver driver = null;
+        switch (browser) {
+            case "firefox":
+                driver = createRemoteDriver(DesiredCapabilities.firefox());
+                break;
+            case "chrome":
+                driver = createRemoteDriver(DesiredCapabilities.chrome());
+                break;
+            case "chromelocal":
+                driver = createLocalChromeDriver();
+                break;
+            default:
+                driver = new FirefoxDriver();
+                break;
+        }
+        return driver;
     }
 
     public static WebDriver createLocalChromeDriver() {
@@ -30,11 +47,13 @@ public class InitialSetup {
 
     }
 
-    public static WebDriver createRemoteChromeDriver() {
+    public static WebDriver createLocalFirefoxDriver() {
+        return new FirefoxDriver();
+    }
+
+    public static WebDriver createRemoteDriver(DesiredCapabilities caps) {
         try {
-            return new RemoteWebDriver(
-                    new URL("http://ip:4444/wd/hub"),
-                    DesiredCapabilities.chrome());
+            return new RemoteWebDriver(new URL("http://ip:4444/wd/hub"), caps);
         } catch (MalformedURLException e) {
             return null;
         }
