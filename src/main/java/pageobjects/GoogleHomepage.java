@@ -21,7 +21,7 @@ public class GoogleHomepage {
     private WebElement searchInput;
     @FindBy(id = "fbar")
     private WebElement fbar;
-    @FindBy(xpath = "//*[@id=\"ab_ctls\"]/li[2]/span")
+    @FindBy(xpath = "//*[@id=\"ab_ctls\"]/li[0]/span")
     private WebElement safeSearch;
     public GoogleHomepage(WebDriver driver) {
         this.driver = driver;

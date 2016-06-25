@@ -23,6 +23,7 @@ public class InitialSetup {
                 driver = createRemoteDriver(DesiredCapabilities.firefox());
                 break;
             case "chrome":
+                //add specific chrome settings here or create a new method
                 driver = createRemoteDriver(DesiredCapabilities.chrome());
                 break;
             case "chromelocal":
@@ -38,6 +39,7 @@ public class InitialSetup {
     public static WebDriver createLocalChromeDriver() {
         System.out.println(System.getProperty("os.name"));
         String path = "";
+        //this should work on windows and linux assuming chromedriver is in the correct folder or the path is changed
         if (System.getProperty("os.name").toLowerCase().indexOf("win") > -1)
             path = "D:\\chromedriver\\chromedriver.exe";
         else
@@ -53,7 +55,8 @@ public class InitialSetup {
 
     public static WebDriver createRemoteDriver(DesiredCapabilities caps) {
         try {
-            return new RemoteWebDriver(new URL("http://ip:4444/wd/hub"), caps);
+            //add grid hostname or ip
+            return new RemoteWebDriver(new URL("http://iporhost:4444/wd/hub"), caps);
         } catch (MalformedURLException e) {
             return null;
         }
