@@ -1,5 +1,6 @@
 package CoreClasses;
 
+import com.sun.deploy.util.SystemUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -18,7 +19,13 @@ public class InitialSetup {
     }
 
     public static WebDriver createLocalChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver\\chromedriver.exe");
+        System.out.println(System.getProperty("os.name"));
+        String path = "";
+        if (System.getProperty("os.name").toLowerCase().indexOf("win") > -1)
+            path = "D:\\chromedriver\\chromedriver.exe";
+        else
+            path = "~/chromedriver/chromedriver";
+        System.setProperty("webdriver.chrome.driver", path);
         return new ChromeDriver();
 
     }
@@ -26,7 +33,7 @@ public class InitialSetup {
     public static WebDriver createRemoteChromeDriver() {
         try {
             return new RemoteWebDriver(
-                    new URL("http://10.2.0.250:4444/wd/hub"),
+                    new URL("http://ip:4444/wd/hub"),
                     DesiredCapabilities.chrome());
         } catch (MalformedURLException e) {
             return null;
