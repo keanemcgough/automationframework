@@ -30,4 +30,3 @@ public class ExampleTest extends WebTest{
     }
 
 }
-https://github.com/keanemcgough/automationframework.git
