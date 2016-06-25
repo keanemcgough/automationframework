@@ -1,10 +1,8 @@
-package CoreClasses;
+package coreclasses;
 
 import org.junit.*;
-import org.junit.Test;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
-import org.openqa.selenium.WebDriver;
 
 /**
  * Created by Keane on 6/24/2016.

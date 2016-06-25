@@ -1,4 +1,4 @@
-package CoreClasses;
+package coreclasses;
 
 import org.junit.After;
 import org.junit.Before;
