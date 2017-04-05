@@ -50,6 +50,7 @@
                             <threadCount>10</threadCount>
                             <includes>
                                 <include>**/ExampleSuite.java</include>
+								<include>**/ExampleTest.java</include>
 							</includes>
                         </configuration>
                     </plugin>
