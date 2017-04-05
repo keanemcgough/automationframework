@@ -24,7 +24,7 @@
 			</plugin>
         </plugins>
     </build>
-<profiles>
+	<profiles>
         <profile>
             <id>tests</id>
             <activation>
@@ -50,6 +50,7 @@
                             <threadCount>10</threadCount>
                             <includes>
                                 <include>**/ExampleSuite.java</include>
+							</includes>
                         </configuration>
                     </plugin>
                 </plugins>
