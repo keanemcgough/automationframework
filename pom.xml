@@ -47,7 +47,9 @@
                         <version>2.19.1</version>
                         <configuration>
                             <parallel>methods</parallel>
-                            <threadCount>10</threadCount>
+                            <forkCount>2.0C</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <threadCount>20</threadCount>
                             <includes>
                                 <include>**/ExampleSuite.java</include>
 								<include>**/ExampleTest.java</include>
