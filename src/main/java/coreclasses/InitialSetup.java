@@ -55,7 +55,7 @@ public class InitialSetup {
     public static WebDriver createRemoteDriver(DesiredCapabilities caps) {
         try {
             //add grid hostname or ip
-            return new RemoteWebDriver(new URL("http://iporhost:4444/wd/hub"), caps);
+            return new RemoteWebDriver(new URL(System.getProperty("gridaddress") + ":4444/wd/hub"), caps);
         } catch (MalformedURLException e) {
             return null;
         }
