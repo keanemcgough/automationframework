@@ -16,6 +16,7 @@ public class InitialSetup {
     public static WebDriver createDriver() {
         String browser = System.getProperty("remotedriver");
         browser = browser == null ? "" : browser;
+        System.out.println("******************" + browser + "*****************");
         WebDriver driver = null;
         switch (browser) {
             case "firefox":
@@ -55,6 +56,7 @@ public class InitialSetup {
     public static WebDriver createRemoteDriver(DesiredCapabilities caps) {
         try {
             //add grid hostname or ip
+            System.out.println("******************" + System.getProperty("gridaddress") + ":4444/wd/hub" + "*****************");
             return new RemoteWebDriver(new URL(System.getProperty("gridaddress") + ":4444/wd/hub"), caps);
         } catch (MalformedURLException e) {
             return null;
